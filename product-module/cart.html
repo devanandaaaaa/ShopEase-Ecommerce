@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart - ShopEase</title>
+
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">ShopEase</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html">Products</a>
+            <a href="#">Orders</a>
+            <a href="cart.html">Cart 🛒</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section class="hero">
+
+            <h1>Shopping Cart 🛒</h1>
+
+            <p>Your selected products</p>
+
+        </section>
+
+        <section id="cartContainer" class="cart-container">
+
+        </section>
+
+    </main>
+
+    <script>
+
+        const cartContainer =
+            document.getElementById("cartContainer");
+
+        let cart =
+            JSON.parse(localStorage.getItem("cart")) || [];
+
+            const total = cart.reduce(
+    (sum, product) => sum + product.price,
+    0
+);
+
+document.querySelector(".cart-total h2").innerText =
+    `Total: ₹${total}`;
+
+        if (cart.length === 0) {
+
+            cartContainer.innerHTML = `
+                <div class="empty-cart">
+                    <h2>Your cart is empty 🛒</h2>
+                    <p>Add some products to your cart.</p>
+
+                    <a href="index.html">
+                        <button>Continue Shopping</button>
+                    </a>
+                </div>
+            `;
+
+        } else {
+
+            cart.forEach(product => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className = "cart-item";
+
+                item.innerHTML = `
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                    >
+
+                    <div class="cart-info">
+
+                        <h2>${product.name}</h2>
+
+                        <p>
+                            ${product.category}
+                        </p>
+
+                        <h3>
+                            ₹${product.price}
+                        </h3>
+
+                    </div>
+
+                `;
+
+                cartContainer.appendChild(item);
+
+            });
+
+        }
+
+        function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    location.reload();
+}
+
+    </script>
+
+    <div class="cart-total">
+    <h2>Total: ₹0</h2>
+
+    <button class="checkout-btn">
+        Proceed to Checkout
+    </button>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase - Products</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+  
+    <header>
+        <div class="logo">ShopEase</div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="#productContainer">Products</a>
+          <a href="http://localhost:5173/login">Login</a>
+          <a href="http://localhost:5173/register">Register</a>
+          <a href="http://localhost:5173/profile">Profile</a>
+          <a href="http://localhost:5173/orders">Orders</a>
+          <a href="http://localhost:5173/cart">Cart 🛒</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+            <h1>Our Products</h1>
+            <p>Find the best products at the best prices.</p>
+        </section>
+
+        <section class="controls">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search products..."
+            >
+
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="electronics">Electronics</option>
+                <option value="fashion">Fashion</option>
+                <option value="shoes">Shoes</option>
+            </select>
+
+            <select id="sortFilter">
+    <option value="default">Sort By</option>
+    <option value="low">Price: Low to High</option>
+    <option value="high">Price: High to Low</option>
+    <option value="name">Name: A to Z</option>
+</select>
+
+        </section>
+
+        <section id="productContainer" class="products">
+
+            <!-- Products will appear here -->
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
